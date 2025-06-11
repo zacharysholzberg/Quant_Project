@@ -20,7 +20,7 @@ def main():
     #AAPL_loader.save_to_csv(AAPL_df)
 
     AAPL_indicator = SMAIndicator(window=5)
-    print(AAPL_indicator.SMACalculator(data=AAPL_df))
+    AAPL_SMA = AAPL_indicator.SMACalculator(AAPL_df)
 
 
 
