@@ -16,16 +16,26 @@ class MeanReversionStrategy:
         self.long_window = long_window
 
     def bollinger_band_signals(self, data: pd.DataFrame) -> pd.DataFrame:
-        return
+        df = data.copy()
+        df['mean'] = self.long_sma.SMACalculator(df)
+        df['std'] = data['close'].rolling(self.long_window).std()
+        df['upper'] = df['mean'] + self.num_std * df['std']
+        df['lower'] = df['mean'] - self.num_std * df['std']
+        df['signal'] = 0
+        df.loc[df['close'] <= df['lower'], 'signal'] = 1 #buy signal
+        df.loc[df['close'] >= df['upper'], 'signal'] = -1 #sell signal
+        print("Z-score range:", df['lower'].min(), df['upper'].max())
+        print(df['signal'].value_counts())
+        return df.dropna()
     
-    def zscore_signals(self, data: pd.DataFrame) -> pd.DataFrame:
+    def zscore_signals(self, data: pd.DataFrame, num_zScore = 1.5) -> pd.DataFrame:
         df = data.copy()
         df['mean'] = self.long_sma.SMACalculator(df)
         df['std'] = data['close'].rolling(self.long_window).std()
         df['zscore'] = (df['close']-df['mean'])/df['std']
         df['signal'] = 0
-        df.loc[df['zscore'] < -self.num_std, 'signal'] = 1 #buy signal
-        df.loc[df['zscore'] > self.num_std, 'signal'] = -1 #sell signal
+        df.loc[df['zscore'] <= -num_zScore, 'signal'] = 1 #buy signal
+        df.loc[df['zscore'] >= num_zScore, 'signal'] = -1 #sell signal
         print("Z-score range:", df['zscore'].min(), df['zscore'].max())
         print(df['signal'].value_counts())
         return df.dropna()

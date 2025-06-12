@@ -22,17 +22,13 @@ def main():
     #print(AAPL_df)
     #AAPL_loader.save_to_csv(AAPL_df)
     AAPL_df = read_data("AAPL_daily_data")
-    print(AAPL_df)
 
     #AAPL_indicator = SMAIndicator(window=80)
     #AAPL_SMA = AAPL_indicator.SMACalculator(AAPL_df)
     #print(AAPL_SMA)
 
-    AAPL_reversion = MeanReversionStrategy(10, 80, 3)
-    print(AAPL_reversion.zscore_signals(AAPL_df))
-
-
-
+    AAPL_reversion = MeanReversionStrategy(10, 20, 2.0)
+    print(AAPL_reversion.bollinger_band_signals(AAPL_df))
 
     
 
