@@ -24,8 +24,6 @@ class MeanReversionStrategy:
         df['signal'] = 0
         df.loc[df['close'] <= df['lower'], 'signal'] = 1 #buy signal
         df.loc[df['close'] >= df['upper'], 'signal'] = -1 #sell signal
-        print("Z-score range:", df['lower'].min(), df['upper'].max())
-        print(df['signal'].value_counts())
         return df.dropna()
     
     def zscore_signals(self, data: pd.DataFrame, num_zScore = 1.5) -> pd.DataFrame:
@@ -36,8 +34,6 @@ class MeanReversionStrategy:
         df['signal'] = 0
         df.loc[df['zscore'] <= -num_zScore, 'signal'] = 1 #buy signal
         df.loc[df['zscore'] >= num_zScore, 'signal'] = -1 #sell signal
-        print("Z-score range:", df['zscore'].min(), df['zscore'].max())
-        print(df['signal'].value_counts())
         return df.dropna()
     
     def rolling_mean_signals(self, data: pd.DataFrame) -> pd.DataFrame:

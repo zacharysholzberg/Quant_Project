@@ -3,12 +3,6 @@
 from data_loader import AlphaVantageDataLoader
 from strategy import *
 from utils import *
-#from strategy import sma_crossover_strategy
-#from backtester import run_backtest
-#from metrics import compute_metrics
-#from alpha_vantage.timeseries import TimeSeries 
-#import requests
-import pandas as pd
 #import os
 
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
