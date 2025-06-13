@@ -1,3 +1,5 @@
+#src/strategy.py
+
 import pandas as pd
 
 
@@ -5,8 +7,8 @@ class SMAIndicator:
     def __init__(self, window: int):
         self.window = window
 
-    def SMACalculator(self, data: pd.DataFrame):
-        return data['close'].rolling(self.window).mean() #pd.series returned
+    def SMACalculator(self, data: pd.DataFrame) -> pd.Series:
+        return data['close'].rolling(self.window).mean()
     
 class MeanReversionStrategy:
     def __init__(self, short_window=5, long_window=20, num_std = 2):

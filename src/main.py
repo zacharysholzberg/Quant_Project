@@ -3,7 +3,6 @@
 from data_loader import AlphaVantageDataLoader
 from strategy import *
 from utils import *
-#import os
 
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
 
