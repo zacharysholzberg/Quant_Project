@@ -1,7 +1,7 @@
 # src/main.py
 
 from data_loader import AlphaVantageDataLoader
-from strategy import *
+from backtester import Backtester
 from utils import *
 
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
@@ -20,8 +20,7 @@ def main():
     #AAPL_SMA = AAPL_indicator.SMACalculator(AAPL_df)
     #print(AAPL_SMA)
 
-    AAPL_reversion = MeanReversionStrategy(10, 20, 2.0)
-    print(AAPL_reversion.bollinger_band_signals(AAPL_df))
+    AAPL_ = Backtester("1999-11-01")
 
     
 

@@ -2,7 +2,7 @@ import pandas as pd
 from strategy import MeanReversionStrategy
 from portfolio import Portfolio
 
-class backtester:
+class Backtester:
     def __init__(self, start_date, portfolio_size = 100000, short_window=5, long_window=20, num_std=2):
         self.portfolio_size = portfolio_size
         self.start_date = start_date
@@ -16,18 +16,19 @@ class backtester:
         #if self.start_date < less than availabe date
         #    raise ValueError("Start date is earlier than available data") 
 
-        if strategy_type == "zscore":
-            signals = strategy.zscore_signals(data)
-        elif strategy_type == "bollinger":
-            signals = strategy.bollinger_band_signals(data)
-        elif strategy_type == "rolling":
-            signals = strategy.rolling_mean_signals(data)
+        strategy_map = {
+        "zscore": strategy.zscore_signals,
+        "bollinger": strategy.bollinger_band_signals,
+        "rolling": strategy.rolling_mean_signals
+        }
 
-        if signals is None:
-            print("Please choose: zscore | bollinger | rolling")
-            raise ValueError("Unknown strategy type provided.")
+        if strategy_type not in strategy_map:
+            raise ValueError(f"Unknown strategy type: {strategy_type}")
+
+        signals = strategy_map[strategy_type](data)
 
         portfolio = Portfolio()
+
         results = portfolio.backtest_portfolio(signals)
 
         return results
