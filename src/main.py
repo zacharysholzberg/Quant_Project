@@ -3,6 +3,7 @@
 from data_loader import AlphaVantageDataLoader
 from backtester import Backtester
 from utils import *
+import matplotlib.pyplot as plt
 
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
 
@@ -20,8 +21,18 @@ def main():
     #AAPL_SMA = AAPL_indicator.SMACalculator(AAPL_df)
     #print(AAPL_SMA)
 
-    AAPL_ = Backtester("1999-11-01")
+    AAPL_backtester = Backtester("any", 100000)
 
+    df = AAPL_backtester.run_backtest(AAPL_df, strategy_type="zscore")
+    print(df)
+    print(df['signal'].value_counts())
+    print(df[['close', 'signal', 'position']].tail(10))
+    plt.figure(figsize=(12, 6))
+    plt.plot(df['cum_returns'], label='Market Returns')
+    plt.plot(df['cum_strategy_returns'], label='Strategy Returns')
+    plt.legend()
+    plt.title('Cumulative Returns')
+    plt.show()
     
 
 if __name__ == "__main__":

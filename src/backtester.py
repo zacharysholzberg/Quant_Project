@@ -3,11 +3,12 @@ from strategy import MeanReversionStrategy
 from portfolio import Portfolio
 
 class Backtester:
-    def __init__(self, start_date, portfolio_size = 100000, short_window=5, long_window=20, num_std=2):
-        self.portfolio_size = portfolio_size
+    def __init__(self, start_date: str, portfolio_size = 100000, short_window=5, long_window=20, num_std=2):
         self.start_date = start_date
+        self.portfolio_size = portfolio_size
         self.short_window = short_window
         self.long_window = long_window
+        self.num_std = num_std
 
     def run_backtest(self, data: pd.DataFrame, strategy_type: str = "zscore_signals") -> pd.DataFrame:
         strategy = MeanReversionStrategy(self.short_window, self.long_window, self.num_std)
@@ -27,7 +28,7 @@ class Backtester:
 
         signals = strategy_map[strategy_type](data)
 
-        portfolio = Portfolio()
+        portfolio = Portfolio(self.start_date, self.portfolio_size)
 
         results = portfolio.backtest_portfolio(signals)
 
