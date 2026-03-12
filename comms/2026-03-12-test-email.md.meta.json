@@ -1,11 +1,11 @@
 {
   "type": "communication",
-  "status": "Draft",
+  "status": "Under Review",
   "subject": "Test Email",
   "recipient": "Jeff",
   "draftedBy": "Zach",
   "createdAt": "2026-03-12T22:08:01.850Z",
-  "submittedAt": null,
+  "submittedAt": "2026-03-12T22:08:30.379Z",
   "approvedBy": null,
   "approvedAt": null,
   "sentAt": null,
@@ -16,6 +16,12 @@
       "by": "Zach",
       "at": "2026-03-12T22:08:01.850Z",
       "note": "Created"
+    },
+    {
+      "status": "Under Review",
+      "by": "Zach",
+      "at": "2026-03-12T22:08:30.379Z",
+      "note": "Submitted for review"
     }
   ]
 }
