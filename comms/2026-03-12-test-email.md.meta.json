@@ -1,6 +1,6 @@
 {
   "type": "communication",
-  "status": "Under Review",
+  "status": "Changes Requested",
   "subject": "Test Email",
   "recipient": "Jeff",
   "draftedBy": "Zach",
@@ -9,7 +9,14 @@
   "approvedBy": null,
   "approvedAt": null,
   "sentAt": null,
-  "comments": [],
+  "comments": [
+    {
+      "by": "Zach ",
+      "at": "2026-03-12T22:08:54.641Z",
+      "text": "Tell them this",
+      "type": "changes-requested"
+    }
+  ],
   "statusHistory": [
     {
       "status": "Draft",
@@ -22,6 +29,12 @@
       "by": "Zach",
       "at": "2026-03-12T22:08:30.379Z",
       "note": "Submitted for review"
+    },
+    {
+      "status": "Changes Requested",
+      "by": "Zach ",
+      "at": "2026-03-12T22:08:54.641Z",
+      "note": "Tell them this"
     }
   ]
 }
