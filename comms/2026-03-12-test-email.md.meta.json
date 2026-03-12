@@ -1,0 +1,21 @@
+{
+  "type": "communication",
+  "status": "Draft",
+  "subject": "Test Email",
+  "recipient": "Jeff",
+  "draftedBy": "Zach",
+  "createdAt": "2026-03-12T22:08:01.850Z",
+  "submittedAt": null,
+  "approvedBy": null,
+  "approvedAt": null,
+  "sentAt": null,
+  "comments": [],
+  "statusHistory": [
+    {
+      "status": "Draft",
+      "by": "Zach",
+      "at": "2026-03-12T22:08:01.850Z",
+      "note": "Created"
+    }
+  ]
+}
